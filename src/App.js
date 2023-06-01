@@ -23,8 +23,8 @@ function App() {
   const [shopItem, setShopItem] = useState([]);
 
   const createImgUrl = (productname) => {
-    const lastWord = productname.split(" ").pop();
-    console.log(lastWord); // Output: Tablet
+    const lastWord = productname?.split(" ").pop();
+    console.log("image", lastWord); // Output: Tablet
     switch (lastWord) {
       case "Camera":
         return imageListe.Camera;
@@ -45,40 +45,51 @@ function App() {
     }
   };
 
-  useEffect(async () => {
-    axios.get("http://localhost:3005/product").then((res) => {
-      setShopsData((prevState) => {
-        return res.data;
-      });
-    });
-  }, []);
-  /*
-  step1 :  const { productItems } = Data 
-  lai pass garne using props
-  
-  Step 2 : item lai cart ma halne using useState
-  ==> CartItem lai pass garre using props from  <Cart CartItem={CartItem} /> ani import garrxa in cartItem ma
- 
-  Step 3 :  chai flashCard ma xa button ma
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://20.97.210.45/product");
 
-  Step 4 :  addToCart lai chai pass garne using props in pages and cart components
-  */
+        setShopsData((prevState) => {
+          return [...response.data];
+        });
+      } catch (error) {
+        console.log("fetching Error", error);
+      }
+    };
+
+    // Delay the execution by 3 seconds using setTimeout
+    const timer = setTimeout(() => {
+      fetchData();
+      console.log("shopsData", shopsData);
+    }, 1000);
+
+    // Clear the timer when the component unmounts or when the dependency array changes
+    return () => clearTimeout(timer);
+  }, []);
 
   //Step 1 :
   useEffect(() => {
-    const data = shopsData.map((shopItem) => {
-      return {
-        id: shopItem.productid,
-        cover: createImgUrl(shopItem.productname),
-        name: shopItem.productname,
-        price: shopItem.Price,
-        discount: "0",
-      };
-    });
+    const fetchData = async () => {
+      // Delay using setTimeout
+      await new Promise((resolve) => setTimeout(resolve, 2000)); // Adjust the delay duration as needed (in milliseconds)
 
-    setShopItem((prevState) => {
-      return [...data];
-    });
+      const data = shopsData.map((shopItem) => {
+        return {
+          id: shopItem.productid,
+          cover: createImgUrl(shopItem.productname),
+          name: shopItem.productname,
+          price: shopItem.Price,
+          discount: "0",
+        };
+      });
+
+      setShopItem((prevState) => {
+        return [...data];
+      });
+    };
+
+    fetchData();
   }, [shopsData]);
 
   const { productItems } = Data;

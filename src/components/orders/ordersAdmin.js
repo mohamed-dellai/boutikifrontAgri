@@ -19,9 +19,14 @@ const OrderListAdmin = () => {
         const decoded = decodeJWT(token);
         const owner = decoded.payload.email;
 
-        const response = await axios.get("http://localhost:3005/order");
+        const response = await new Promise((resolve) => {
+          setTimeout(async () => {
+            const result = await axios.get("http://20.97.210.45/order");
+            resolve(result);
+          }, 2000); // Adjust the delay duration as needed
+        });
         const filteredOrders = response.data;
-
+        console.log("filteredOrders", filteredOrders);
         setOrders(filteredOrders);
         setLoading(false);
       } catch (error) {
@@ -38,10 +43,10 @@ const OrderListAdmin = () => {
 
   return (
     <div className="order-list">
-      {orders.length === 0 ? (
+      {orders?.length === 0 ? (
         <div>No orders found.</div>
       ) : (
-        orders.map((order, index) => (
+        orders?.map((order, index) => (
           <div className="order-item" key={index}>
             <h3>Order #{index + 1}</h3>
             <div className="order-details">
@@ -57,7 +62,7 @@ const OrderListAdmin = () => {
             </div>
             <h4>Cart Items:</h4>
             <div className="cart-items">
-              {order.cartItems.map((item) => (
+              {order?.cartItems.map((item) => (
                 <div className="cart-item" key={item.id}>
                   <img src={item.cover} alt={item.name} />
                   <div className="item-details">

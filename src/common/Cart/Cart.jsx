@@ -44,7 +44,7 @@ const Cart = ({ CartItem, addToCart, decreaseQty }) => {
       owner: decodedToken ? decodedToken.payload.email : null,
     };
     axios
-      .post("http://localhost:3005/order/", order)
+      .post("http://20.97.210.45/order/", order)
       .then((res) => {
         console.log(res.data);
         console.log("purchasing ...");

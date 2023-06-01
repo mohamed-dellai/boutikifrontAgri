@@ -37,7 +37,7 @@ export default function AddProductForm() {
 
     console.log(customid());
     axios
-      .post("http://localhost:3005/product/", {
+      .post("http://20.97.210.45/product/", {
         productid: customid(),
         ...product,
       })

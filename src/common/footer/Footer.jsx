@@ -4,30 +4,20 @@ import "./style.css";
 const Footer = () => {
   return (
     <>
-      <footer>
-        <div className="container grid2">
+      <footer style={{background:"green"}}>
+        <div className="container grid2" >
           <div className="box">
-            <h1>Boutiki</h1>
+            <h1>Nomsite</h1>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor
               libero id et, in gravida. Sit diam duis mauris nulla cursus. Erat
               et lectus vel ut sollicitudin elit at amet.
             </p>
-            <div className="icon d_flex">
-              <div className="img d_flex">
-                <i class="fa-brands fa-google-play"></i>
-                <span>Google Play</span>
-              </div>
-              <div className="img d_flex">
-                <i class="fa-brands fa-app-store-ios"></i>
-                <span>App Store</span>
-              </div>
-            </div>
           </div>
 
           <div className="box">
             <h2>About Us</h2>
-            <ul>
+            <ul >
               <li>Careers</li>
               <li>Our Stores</li>
               <li>Our Cares</li>
@@ -49,7 +39,7 @@ const Footer = () => {
             <h2>Contact Us</h2>
             <ul>
               <li>2000 , Le Bardo , Tunis</li>
-              <li>Email: support@boutiki.tn </li>
+              <li>Email: support.tn </li>
               <li>Phone: +216 27086716</li>
             </ul>
           </div>

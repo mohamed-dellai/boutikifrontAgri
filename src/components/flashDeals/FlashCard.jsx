@@ -46,8 +46,8 @@ const FlashCard = ({ productItems, addToCart }) => {
             <div className='box'>
               <div className='product mtop'>
                 <div className='img'>
-                  <span className='discount'>{productItems.discount}% Off</span>
-                  <img src={productItems.cover} alt='' />
+                  <span className='discount'>Top quality</span>
+                  <img src={productItems.cover} alt='' style={{maxWidth:"200px",height:"190px"}}/>
                   <div className='product-like'>
                     <label>{count}</label> <br />
                     <i className='fa-regular fa-heart' onClick={increment}></i>
@@ -55,15 +55,9 @@ const FlashCard = ({ productItems, addToCart }) => {
                 </div>
                 <div className='product-details'>
                   <h3>{productItems.name}</h3>
-                  <div className='rate'>
-                    <i className='fa fa-star'></i>
-                    <i className='fa fa-star'></i>
-                    <i className='fa fa-star'></i>
-                    <i className='fa fa-star'></i>
-                    <i className='fa fa-star'></i>
-                  </div>
+                 
                   <div className='price'>
-                    <h4>${productItems.price}.00 </h4>
+                    <h4>DT {productItems.price}.00 </h4>
                     {/* step : 3  
                      if hami le button ma click garryo bahne 
                     */}

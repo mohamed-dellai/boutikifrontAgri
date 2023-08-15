@@ -8,6 +8,7 @@ import Cart from "./common/Cart/Cart";
 
 import Login from "./components/auth/login";
 import Signup from "./components/auth/signup";
+import ProductList from "./components/productList/prducts";
 import axios from "axios";
 import imageListe from "./components/image";
 import AddProductForm from "./components/addproduct/addproduct";
@@ -101,12 +102,7 @@ function App() {
   const addToCart = (product) => {
     // if hamro product alredy cart xa bhane  find garna help garxa
     const productExit = CartItem.find((item) => item.id === product.id);
-    // if productExit chai alredy exit in cart then will run fun() => setCartItem
-    // ani inside => setCartItem will run => map() ani yo map() chai each cart ma
-    // gayara check garxa if item.id ra product.id chai match bhayo bhane
-    // productExit product chai display garxa
-    // ani increase  exits product QTY by 1
-    // if item and product doesnt match then will add new items
+    
     if (productExit) {
       setCartItem(
         CartItem.map((item) =>
@@ -159,6 +155,9 @@ function App() {
               addToCart={addToCart}
               shopItems={shopItem}
             />
+          </Route>
+          <Route path='/products'>
+            <ProductList addToCart={addToCart}></ProductList>
           </Route>
           <Route path="/cart" exact>
             <Cart

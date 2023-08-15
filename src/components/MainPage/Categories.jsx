@@ -1,67 +1,40 @@
-import React from "react"
+import React from "react";
+import { ReactComponent as One } from "./grocery.svg";
+import { ReactComponent as Two } from "./milk.svg";
+import { ReactComponent as Three } from "./sucre.svg";
+import { Redirect } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 const Categories = () => {
+  const history = useHistory();
   const data = [
     {
-      cateImg: "./images/category/cat1.png",
-      cateName: "Fashion",
+      cateImg: <One />,
+      cateName: "Épicerie salée",
     },
     {
-      cateImg: "./images/category/cat2.png",
-      cateName: "Electronic",
+      cateImg: <Two />,
+      cateName: "Épicerie laitier",
     },
     {
-      cateImg: "./images/category/cat3.png",
-      cateName: "Cars",
+      cateImg: <Three />,
+      cateName: "Produit sucrée",
     },
-    {
-      cateImg: "./images/category/cat4.png",
-      cateName: "Home & Garden",
-    },
-    {
-      cateImg: "./images/category/cat5.png",
-      cateName: "Gifts",
-    },
-    {
-      cateImg: "./images/category/cat6.png",
-      cateName: "Music",
-    },
-    {
-      cateImg: "./images/category/cat7.png",
-      cateName: "Health & Beauty",
-    },
-    {
-      cateImg: "./images/category/cat8.png",
-      cateName: "Pets",
-    },
-    {
-      cateImg: "./images/category/cat9.png",
-      cateName: "Baby Toys",
-    },
-    {
-      cateImg: "./images/category/cat10.png",
-      cateName: "Groceries",
-    },
-    {
-      cateImg: "./images/category/cat11.png",
-      cateName: "Books",
-    },
-  ]
+  ];
+  const handleCategoryClick = () => {
+    history.push('/products'); // Redirect to "/products" route
+  };
 
   return (
-    <>
-      <div className='category'>
-        {data.map((value, index) => {
-          return (
-            <div className='box f_flex' key={index}>
-              <img src={value.cateImg} alt='' />
-              <span>{value.cateName}</span>
-            </div>
-          )
-        })}
-      </div>
-    </>
-  )
-}
+    <div className='category'>
+      {data.map((value, index) => (
+        <div className='box f_flex' key={index} onClick={handleCategoryClick}>
+          {value.cateImg}
+          <span>{value.cateName}</span>
+        </div>
+      ))}
+    </div>
+  );
+};
 
-export default Categories
+export default Categories;

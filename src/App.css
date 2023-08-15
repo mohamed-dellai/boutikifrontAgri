@@ -247,3 +247,17 @@ button {
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 10px;
 }
+.box li{
+  color: white;
+  font-weight: 600;
+}
+svg{
+  height: 50px;
+  width: 50px;
+}
+.category{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 55px;
+}

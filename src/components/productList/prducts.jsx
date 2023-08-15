@@ -1,7 +1,7 @@
 import React from "react"
 import Data from "../Data"
 import { useState } from "react"
-const ProductList = (addToCart) => {
+const ProductList = ({addToCart}) => {
     var productItems=Data.productItems
     const [count, setCount] = useState(0)
   const increment = () => {
